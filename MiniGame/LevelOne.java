@@ -14,19 +14,19 @@ public class LevelOne extends Game {
 		System.out.println("난이도 초급 문제입니다.");
 		System.out.println("[ㅇㅇㅇ ㅇ도]");
 		System.out.println("힌트가 필요하시면 \"힌트\"를 입력해주세요. ");
-//		System.out.println("정답을 입력해주세요!");
+		System.out.println("정답을 입력해주세요!");
 		
-		JOptionPane.showInputDialog("확인하세요");
+//		JOptionPane.showInputDialog("확인하세요");
 		
-		String answer = JOptionPane.showInputDialog("정답을 입력하세요 :");
-		System.out.println("2123132");
+//		String answer = JOptionPane.showInputDialog("정답을 입력하세요 :");
+		
 		time.Timer();
 
 		while (time.count < 60) {
 
-//			String answer = util.key.nextLine();
+			String answer = util.key.nextLine();
 			
-			System.out.println("정답은? " + answer);
+//			System.out.println("정답은? " + answer);
 			
 
 			if (answer.equals("연애의 온도")) {
