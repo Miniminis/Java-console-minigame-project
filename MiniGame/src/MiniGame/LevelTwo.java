@@ -23,7 +23,7 @@ public class LevelTwo extends Game {
 				saveData();
 				main();
 			} else if (answer.equals("힌트")) {
-				System.out.println("<힌트 : 출연배우 이민기, 김민희>");
+				System.out.println("<힌트 : 출연배우 정우성>");
 			} else if (answer.equals("난 바보야")) {
 				main();
 			} else {
@@ -50,7 +50,7 @@ public class LevelTwo extends Game {
 				saveData();
 				main();
 			} else if (answer.equals("힌트")) {
-				System.out.println("<힌트 : 출연배우 이민기, 김민희>");
+				System.out.println("<힌트 : 매너가 사람을 만든다>");
 			} else if (answer.equals("난 바보야")) {
 				main();
 			} else {
@@ -76,7 +76,7 @@ public class LevelTwo extends Game {
 				saveData();
 				main();
 			} else if (answer.equals("힌트")) {
-				System.out.println("<힌트 : 출연배우 이민기, 김민희>");
+				System.out.println("<힌트 : 감정>");
 			} else if (answer.equals("난 바보야")) {
 				main();
 			} else {

@@ -54,7 +54,7 @@ public class LevelOne extends Game {
 				saveData();
 				main();
 			} else if (answer.equals("힌트")) {
-				System.out.println("<힌트 : 출연배우 이민기, 김민희>");
+				System.out.println("<힌트 : 장르 뮤지컬,드라마,멜로/로맨스>");
 			} else if (answer.equals("난 바보야")) {
 				main();
 			} else {
@@ -80,8 +80,11 @@ public class LevelOne extends Game {
 				main();
 			} else if (answer.equals("힌트")) {
 				System.out.println("<힌트 : 물고기>");
+			} else if (answer.equals("난 바보야")) {
+				main();
 			} else {
 				System.out.println("틀렸습니다. 다시생각해보세요.");
+
 			}
 		}
 	}

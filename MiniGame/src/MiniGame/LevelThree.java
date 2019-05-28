@@ -19,7 +19,7 @@ public class LevelThree extends Game {
 				saveData();
 				main();
 			} else if (answer.equals("힌트")) {
-				System.out.println("<힌트 : 출연배우 이민기, 김민희>");
+				System.out.println("<힌트 : 키워드 전쟁, 팝콘>");
 			} else if (answer.equals("난 바보야")) {
 				main();
 			} else {
@@ -43,7 +43,7 @@ public class LevelThree extends Game {
 				saveData();
 				main();
 			} else if (answer.equals("힌트")) {
-				System.out.println("<힌트 : 출연배우 이민기, 김민희>");
+				System.out.println("<힌트 : 출연배우 조니 뎁>");
 			} else if (answer.equals("난 바보야")) {
 				main();
 			} else {
@@ -68,7 +68,7 @@ public class LevelThree extends Game {
 				saveData();
 				main();
 			} else if (answer.equals("힌트")) {
-				System.out.println("<힌트 : 출연배우 이민기, 김민희>");
+				System.out.println("<힌트 : 도토리>");
 			} else if (answer.equals("난 바보야")) {
 				main();
 			} else {
