@@ -8,8 +8,8 @@ public class GameBoy {
 	
 	RankTest rt = new RankTest();
 	
-	 String name;
-	 int point;
+	 public String name;
+	 public int point;
 
 	// 게임선택창에서 선택한 수를 가져와 담아줄 변수
 	int check = 1;// 테스트용
@@ -22,10 +22,10 @@ public class GameBoy {
 
 
 
-	public void setInfo(String name, int point) {
-		this.name = name;
-		this.point = point;
-	}
+//	public void setInfo(String name, int point) {
+//		this.name = name;
+//		this.point = point;
+//	}
 
 
 

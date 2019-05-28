@@ -7,7 +7,6 @@ public class RankTest {
 	static RankManger rm = RankManger.getInctance();
 	static List<GameBoy> list;
 
-	static TestBoy gab = new TestBoy();
 	public static void rank() {
 		
 		// 보고싶은 게임고르기

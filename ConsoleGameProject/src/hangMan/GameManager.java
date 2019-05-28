@@ -4,25 +4,24 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import lankTest.GameBoy;
-import user.UserInfoManager;
+import user.UserManager;
 import util.Util;
 
-public class GameManager extends GameBoy{
+public class GameManager extends UserManager{
 
 	String name;
 	int point;
+	
+	
+	GameBoy gb = new GameBoy(this.name, this.point);
 
-	int check=1;
-	
-	
-	
-	
+	int check = 1;
 
 	// 0. 게임 시작 메뉴 입력 화면
 	public int startMenu(String id, int score) {
-		this.name=id;
-		this.point=score;
-		
+		this.name = id;
+		this.point = score;
+
 		int choice = 0;
 		System.out.println("===========================");
 		System.out.println(id + " 님 환영합니다*^^*");
@@ -35,14 +34,14 @@ public class GameManager extends GameBoy{
 			choice = Util.keyboard.nextInt();
 		} catch (InputMismatchException e) {
 			System.out.println("1-4번 사이의 번호를 입력해주세요. ");
-		} 
-		Util.keyboard.nextLine(); 
+		}
+		Util.keyboard.nextLine();
 		return choice;
 	}
 
 	void gameStart(int n) {
-		
-		//random words 인스턴스 생성 
+
+		// random words 인스턴스 생성
 		RandomWords rdw = new RandomWords();
 
 		String correctAnswer = rdw.randomWord(n); // 랜덤 키워드로부터 길이가 n인 정답단어 축출
@@ -67,14 +66,13 @@ public class GameManager extends GameBoy{
 				System.out.print(blank[i] + " ");
 			}
 
-
 			// 사용자 정답 입력 = answer
 			Scanner sc = new Scanner(System.in);
 			String answer = sc.nextLine();
 			int ansLen = answer.length();
-			
+
 			// 유저가 게임 중단을 선택할때
-			if(answer.equals("5")) {
+			if (answer.equals("5")) {
 				afterGame(failCnt);
 			}
 
@@ -103,19 +101,18 @@ public class GameManager extends GameBoy{
 					System.out.println("남은 횟수: " + (12 - failCnt));
 					System.out.println("억울한 사형수의 " + deleteHangMan(12 - failCnt) + "이/가 사라집니다.");
 				}
-				
-				//힌트제공 (failCnt == 3, 6, 9)
-				if(failCnt==3) {
+
+				// 힌트제공 (failCnt == 3, 6, 9)
+				if (failCnt == 3) {
 					System.out.println("너무 못하셔서 힌트를 드릴게요. ");
 					blank[0] = correctAnswer.charAt(0);
-				} else if(failCnt==6) {
+				} else if (failCnt == 6) {
 					System.out.println("너무 못하셔서 힌트를 드릴게요. ");
 					blank[2] = correctAnswer.charAt(2);
-				} else if(failCnt==9) {
+				} else if (failCnt == 9) {
 					System.out.println("너무 못하셔서 힌트를 드릴게요. ");
 					blank[1] = correctAnswer.charAt(1);
 				}
-				
 
 				// 유저가 단어(문자열)로 입력한 경우
 			} else {
@@ -139,16 +136,16 @@ public class GameManager extends GameBoy{
 
 	// 게임 완료 후 메뉴 선택지
 	void afterGame(int failCnt) {
-		
-		while(true ) {
-			
+
+		while (true) {
+
 			System.out.println("===========================");
 			System.out.println("게임이 끝났습니다. 메뉴를 선택해주세요. ");
 			System.out.printf("\n%d) 게임 다시하기 \n%d) 메인으로 돌아가기", util.Menu.KEEPGAME, util.Menu.GOTOMAIN);
 			System.out.println("\n===========================");
 
 			int choice = Util.keyboard.nextInt();
-			
+
 			switch (choice) {
 			case util.Menu.KEEPGAME: // 게임 계속하기
 				GameFlow gflow = new GameFlow();
@@ -156,8 +153,8 @@ public class GameManager extends GameBoy{
 				break;
 			case util.Menu.GOTOMAIN: // 메인으로 돌아가기
 				// 메인 클래스와 연결
-				break;
-			default: 
+				game(name);
+			default:
 				System.out.println("메뉴를 다시 선택해주세요. ");
 			}
 		}
@@ -179,7 +176,7 @@ public class GameManager extends GameBoy{
 
 	// 점수 매서드
 	int gamePoint(int n) {
-		int gamePoint = 0;
+		int gamePoint = point;
 		int failCnt = n;
 		if (failCnt <= 1) {
 			gamePoint = 100;
@@ -196,22 +193,16 @@ public class GameManager extends GameBoy{
 	}
 
 	// 유저-게임포인트 저장 메서드
-	
-	
+
 	void savePoint(int gameP) {
-		int gamePoint = gameP;
+		System.out.println(name+gameP);
 		// 사용자 정보 클래스에 저장
-		System.out.println("이번 판의 게임 포인트는 " + gamePoint + "점 입니다.");
+		gb.name=name;
+		gb.point=gameP;
+		gb.saveData(check);
+		System.out.println("이번 판의 게임 포인트는 " + gameP + "점 입니다.");
 	}
 
-	@Override
-	public void saveData(int check) {
-		super.setInfo(name, point);
-		// TODO Auto-generated method stub
-		super.saveData(check);
-	}
-
-	
 	// failCnt가 3일 때 힌트 제안
 	void Hint() {
 

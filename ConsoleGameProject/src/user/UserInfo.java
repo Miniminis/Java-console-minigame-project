@@ -24,6 +24,13 @@ public class UserInfo {
 
 	}
 	
+	
+	public UserInfo(String id, int score) {
+
+		this.id = id;
+		this.score = score;
+	}
+	
 
 	public String getId() {
 		return id;
