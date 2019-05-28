@@ -3,14 +3,16 @@ package lankTest;
 import java.util.InputMismatchException;
 import java.util.List;
 
-public class RankTest {
+import user.UserManager;
+import util.Menu;
+
+public class RankTest extends UserManager{
 	static RankManger rm = RankManger.getInctance();
 	static List<GameBoy> list;
 
-	public static void rank() {
+	public static void rank(String id) {
 		
 		// 보고싶은 게임고르기
-		
 		int choice = 0;
 		while (true) {
 
@@ -19,39 +21,25 @@ public class RankTest {
 			choice = choiceMenu();
 
 			switch (choice) {
-			case 1:
+			case Menu.FIRST_GAME:
 				list = rm.lank1;
-				rm.checkRank(list);
+				rm.checkRank(list, id);
 				break;
-			case 2:
+			case Menu.SECOND_GAME:
 				list = rm.lank2;
-				rm.checkRank(list);
+				rm.checkRank(list, id);
 				break;
-			case 3:
+			case Menu.THIRD_GAME:
 				list = rm.lank3;
-				rm.checkRank(list);
+				rm.checkRank(list, id);
 				break;
-
-			case 4:
-				list = rm.lank4;
-				rm.checkRank(list);
-				break;
-
-			// 이전화면으로 돌아가기
-
-			case 5: {
-				System.out.println("EXIT RANK");
-				break;
+			case Menu.BACK: {
+				return;
 			}
 
 			default:
-				System.out.println("마! 똑바로 숫자 안 누르나 ! 팍 씨!");
+				System.out.println("메뉴에서 선택해주세요.");
 				break;
-			}
-			// 이전 화면으로 돌아가기
-			if (choice == 5) {
-				break;
-
 			}
 
 		}
@@ -59,8 +47,9 @@ public class RankTest {
 
 	public static int choiceMenu() {
 		int choice = 0;
-		System.out.println("==RANKING CHECK==");
-		System.out.println("1.FirstGame\n2.SecondGame\n3.ThirdGame\n4.Fourth Game\n5.EXIT RANK");
+		
+		System.out.printf("%d.행맨(HangMan) 게임\n%d.두번째 게임\n%d.세번째 게임\n%d.이전으로\n", Menu.FIRST_GAME, Menu.SECOND_GAME, Menu.THIRD_GAME,
+				Menu.BACK);
 		// 예외처리 정수형 이외의 키를 입력할시 0을 리턴시켜 위 switch문에서 default를 실행시킨다.
 		try {
 			choice = GameBasic.key.nextInt();

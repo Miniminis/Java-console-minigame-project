@@ -24,9 +24,9 @@ public class GameBoy   {
 	}
 
 	public void showData() {
-		System.out.println("USERNAME:" + name);
-		System.out.println("POINT   :" + point);
-		System.out.println("-------------");
+		System.out.println("이름 : " + name);
+		System.out.println("점수 : " + point);
+		System.out.println("=====================================");
 	}
 
 	public void saveData(int check) {
@@ -46,11 +46,11 @@ public class GameBoy   {
 			lt.list = lt.rm.lank3;
 			dataUp(lt.list);
 			break;
-		case 4:
+		/*case 4:
 			lt.list =lt. rm.lank4;
 			dataUp(lt.list);
 			break;
-
+			*/
 		}
 	}
 //점수갱신

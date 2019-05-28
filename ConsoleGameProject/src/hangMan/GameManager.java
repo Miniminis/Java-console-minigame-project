@@ -17,7 +17,6 @@ public class GameManager extends UserManager{
 	int check = 1;
 	
 	
-	
 	GameBoy gb = new GameBoy();
 
 
@@ -160,9 +159,10 @@ public class GameManager extends UserManager{
 				break;
 			case util.Menu.GOTOMAIN: // 메인으로 돌아가기
 				// 메인 클래스와 연결
-				game(name);
+				return;
 			default:
 				System.out.println("메뉴를 다시 선택해주세요. ");
+				afterGame(failCnt);
 			}
 		}
 	}
@@ -200,8 +200,8 @@ public class GameManager extends UserManager{
 		savePoint(gamePoint);
 	}
 
+	
 	// 유저-게임포인트 저장 메서드
-
 	public void savePoint(int point) {
 		gb.name=name;
 		gb.point=point;

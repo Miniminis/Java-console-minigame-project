@@ -9,7 +9,7 @@ import util.Menu;
 import util.Util;
 
 public class UserManager{
-
+	
 	
 	public static Map<String, UserInfo> userinfo = new HashMap<String, UserInfo>();
 
@@ -26,7 +26,7 @@ public class UserManager{
 	private static UserInfoManager m = new UserInfoManager();*/
 	
 	// 메인메뉴 출력
-	public int printMainMenu() {
+	public static int printMainMenu() {
 
 		// 메인메뉴
 		System.out.println("=====================================");
@@ -48,7 +48,7 @@ public class UserManager{
 	
 	
 	//메인
-	public void mainMenu() {
+	public static void mainMenu() {
 		while (true) {
 
 			int choice = printMainMenu();
@@ -79,7 +79,7 @@ public class UserManager{
 	
 	
 	// 로그인
-	public void login() {
+	public static void login() {
 
 		System.out.print("아이디   : ");
 		String id = Util.keyboard.nextLine();
@@ -106,7 +106,7 @@ public class UserManager{
 	
 
 	//회원가입
-	public void joinMember() {
+	public static void joinMember() {
 		
 		String id = null;
 		
@@ -184,12 +184,12 @@ public class UserManager{
 			System.out.println("=====================================");
 			System.out.println("	        랭킹확인");
 			System.out.println("=====================================");
-			rank();
+			printRank(id);
 			break;
 		case Menu.L_OUT://로그아웃
 			System.out.println("로그아웃됩니다.");
-			//mainMenu();
 			return;
+			//mainMenu();
 			//break;
 		case Menu.L_WITHDRAWAL://회원탈퇴
 			deleteMember(id);
@@ -286,7 +286,7 @@ public class UserManager{
 			break;
 		case Menu.BACK://이전으로
 			printSubMenu(id);
-			break;
+			return;
 		default:
 			System.out.println("메뉴중에서 선택해주세요.");
 			break;
@@ -296,8 +296,8 @@ public class UserManager{
 	
 	
 	//랭킹
-	public static void rank() {
-		lankTest.RankTest.rank();
+	public static void printRank(String id) {
+		lankTest.RankTest.rank(id);
 	}
 	
 	
@@ -323,6 +323,7 @@ public class UserManager{
 					
 				//x를 입력하면 대소문자 상관없이 이전으로 이동
 				}else if(pw.toUpperCase().equals("X") || pw.toLowerCase().equals("x")) {
+					
 					printSubMenu(id);
 				}else {
 					System.out.println("잘못된 비밀번호입니다. 다시 입력해주세요.");

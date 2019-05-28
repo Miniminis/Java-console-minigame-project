@@ -11,7 +11,11 @@ public class GameFlow extends UserManager {
 		
 		System.out.println(id + "님 게임을 선택해주세요. ");
 		
-		while(true) {
+		boolean check = false;
+		
+		
+		//while(true) {
+		
 			int choice = gm.startMenu(id);
 
 			switch(choice) {
@@ -28,13 +32,13 @@ public class GameFlow extends UserManager {
 				gm.gameStart(10);
 				break;
 			case util.Menu.BACK: //뒤로가기
-				 //return;
+				// return;
 				 game(id);
 			default : //
 				System.out.println("적절한 선택을 해주세요. ");
 			}
 			
-		}
+		//}
 	}
 
 }
