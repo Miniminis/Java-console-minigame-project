@@ -258,7 +258,7 @@ public class UserInfoManager implements UserInfoInterface{
 	public void game(String id) {
 
 		System.out.println("로그인 유저 : " + id + "(" + userinfo.get(id).getNickname() + ")");
-		System.out.printf("%d.첫번째 게임\n%d.두번째 게임\n%d.세번째 게임\n%d.이전으로", Menu.FIRST_GAME, Menu.SECOND_GAME, Menu.THIRD_GAME,
+		System.out.printf("%d.행맨(HangMan) 게임\n%d.두번째 게임\n%d.세번째 게임\n%d.이전으로", Menu.FIRST_GAME, Menu.SECOND_GAME, Menu.THIRD_GAME,
 				Menu.BACK);
 		System.out.println("\n=====================================");
 
@@ -278,7 +278,7 @@ public class UserInfoManager implements UserInfoInterface{
 		
 		switch (GameChoice) {
 		case Menu.FIRST_GAME://첫번째게임
-			
+			hangMan.GameFlow.gameProcess(id, userinfo.get(id).getScore());
 			break;
 		case Menu.SECOND_GAME://두번째게임
 			

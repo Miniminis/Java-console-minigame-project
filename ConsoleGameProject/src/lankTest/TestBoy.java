@@ -1,6 +1,7 @@
 package lankTest;
 
 public class TestBoy extends GameBoy {
+
 	String name = "점심국밥";
 	int point = 89;
 	int check = 1;
