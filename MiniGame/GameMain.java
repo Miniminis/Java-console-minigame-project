@@ -1,18 +1,14 @@
 package MiniGame;
 
-import javax.swing.JOptionPane;
-
 public class GameMain {
 
 	public static void main(String[] args) {
-
-		JOptionPane.showInputDialog("확인하세요");
 		
 		Game game = new Game();
 		LevelOne one = new LevelOne();
 		LevelTwo two = new LevelTwo();
 		LevelThree three = new LevelThree();
-		Back back = new Back();
+
 
 		game.StartWord();
 		int choice = 0;
@@ -42,7 +38,7 @@ public class GameMain {
 						three.Korea3();
 						break;
 					case 4:
-						back.showprint();
+						game.Back();
 					}
 					break;
 				}
@@ -62,10 +58,11 @@ public class GameMain {
 						three.World3();
 						break;
 					case 4:
-						back.showprint();
+						game.Back();
 					}
 					break;
 				}
+				
 				//애니메이션 영화
 			case Util.ani_MOVIE:
 
@@ -82,7 +79,7 @@ public class GameMain {
 						three.ani3();
 						break;
 					case 4:
-						back.showprint();
+						game.Back();
 					}
 					break;
 				}

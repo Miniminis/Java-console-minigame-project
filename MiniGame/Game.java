@@ -1,5 +1,6 @@
 package MiniGame;
 
+
 import java.util.InputMismatchException;
 
 public class Game implements GameInterface {
@@ -32,9 +33,9 @@ public class Game implements GameInterface {
 	public int showprint() {
 
 		System.out.println("-------------------");
-		System.out.println(Util.KOREA_MOVIE + ". 한국영화 ");
-		System.out.println(Util.world_MOVIE + ". 외국영화");
-		System.out.println(Util.ani_MOVIE + ". 애니메이션 영화");
+		System.out.println(Util.KOREA_MOVIE + ") 한국영화 ");
+		System.out.println(Util.world_MOVIE + ") 외국영화");
+		System.out.println(Util.ani_MOVIE + ") 애니메이션 영화");
 		System.out.println("-------------------");
 		int choice = 0;
 		try {
@@ -46,19 +47,19 @@ public class Game implements GameInterface {
 			}
 
 		} catch (InputMismatchException e) {
+			util.key.nextLine();
 			System.out.println("----------------------");
 			System.out.println("1~3사이의 숫자를 입력해주세요!");
 			System.out.println("----------------------");
 
 		}
-		util.key.nextLine();
 		return choice;
 
 	}
 
 	// 메인이나 게임으로 돌아가는 메소드
 	public void main() {
-		System.out.println("1.게임 계속하기 2.랭킹 확인하기 3.메인 돌아가기");
+		System.out.println("1) 게임 계속하기 2) 랭킹 확인하기 3) 메인 돌아가기");
 		try {
 			choice = util.key.nextInt();
 			switch (choice) {
@@ -78,10 +79,11 @@ public class Game implements GameInterface {
 
 			}
 		} catch (InputMismatchException e) {
+			util.key.nextLine();
 			System.out.println("1~3사이의 숫자를 입력해주세요!");
 
 		}
-		util.key.nextLine();
+
 
 	}
 
@@ -99,7 +101,7 @@ public class Game implements GameInterface {
 	public int Level() {
 
 		System.out.println("난이도를 선택해주세요.");
-		System.out.println("1.초급  2.중급  3.고급  4.뒤로가기");
+		System.out.println("1) 초급  2) 중급  3) 고급  4) 뒤로가기");
 		System.out.println("<초급> 1~30점 ");
 		System.out.println("<중급> 30~50점");
 		System.out.println("<고급> 50~70점");
@@ -123,6 +125,9 @@ public class Game implements GameInterface {
 		util.key.nextLine();
 		return cho;
 
+	}
+	public void Back() {
+		showprint();
 	}
 
 }
