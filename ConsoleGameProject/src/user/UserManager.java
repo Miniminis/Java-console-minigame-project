@@ -11,16 +11,19 @@ import util.Util;
 public class UserManager{
 
 	
-	 Map<String, UserInfo> userinfo = new HashMap<String, UserInfo>();
-	/*
-	 * //싱글톤 패턴 public static UserInfoManager getInstance() {
-	 * 
-	 * if(m == null) { m = new UserInfoManager(); } return m; }
-	 * 
-	 * 
-	 * private static UserInfoManager m = new UserInfoManager();
-	 */
+	public static Map<String, UserInfo> userinfo = new HashMap<String, UserInfo>();
 
+	
+	/*public static UserInfoManager getInstance() {
+
+		if (m == null) {
+			m = new UserInfoManager();
+		}
+		return m;
+		
+	}
+
+	private static UserInfoManager m = new UserInfoManager();*/
 	
 	// 메인메뉴 출력
 	public int printMainMenu() {
@@ -135,7 +138,7 @@ public class UserManager{
 	
 	
 	// 서브메뉴출력
-	public void printSubMenu(String id) {
+	public static void printSubMenu(String id) {
 
 		System.out.println("=====================================");
 		System.out.println("	      Sub Menu");
@@ -159,7 +162,7 @@ public class UserManager{
 
 	
 	//서브메뉴관리
-	public void subMain(int subChoice, String id) {
+	public static void subMain(int subChoice, String id) {
 		
 		switch (subChoice) {
 		case Menu.L_UPDATE://정보수정
@@ -201,7 +204,7 @@ public class UserManager{
 	
 	
 	// 회원수정
-	public void updateInfo(String id) {
+	public static void updateInfo(String id) {
 
 		System.out.println("수정 전 본인확인을 위해 비밀번호를 입력해주세요.");
 		System.out.println("이전으로 가려면 X입력");
@@ -234,7 +237,7 @@ public class UserManager{
 	
 	
 	//내정보보기
-	public void myInfo(String id) {
+	public static void myInfo(String id) {
 		if (userinfo.get(id).getId().equals(id)) {
 			
 			System.out.println("아 이 디 : " + id);
@@ -248,7 +251,7 @@ public class UserManager{
 	
 	
 	//게임하기
-	public void game(String id) {
+	public static void game(String id) {
 
 		System.out.println("=====================================");
 		System.out.println("	        게임하기");
@@ -269,11 +272,11 @@ public class UserManager{
 	
 	
 	//게임관리
-	public void gameMain(int GameChoice, String id) {
+	public static void gameMain(int GameChoice, String id) {
 
 		switch (GameChoice) {
 		case Menu.FIRST_GAME://첫번째게임
-			hangMan.GameFlow.gameProcess(id, userinfo.get(id).getScore());
+			hangMan.GameFlow.gameProcess(id);
 			break;
 		case Menu.SECOND_GAME://두번째게임
 			
@@ -293,13 +296,13 @@ public class UserManager{
 	
 	
 	//랭킹
-	public void rank() {
+	public static void rank() {
 		lankTest.RankTest.rank();
 	}
 	
 	
 	//회원탈퇴
-	public void deleteMember(String id) {
+	public static void deleteMember(String id) {
 		System.out.println("회원탈퇴 하시겠습니까? (Y/N)");
 		String answer = Util.keyboard.nextLine();
 		
@@ -339,7 +342,7 @@ public class UserManager{
 	
 	
 	//nextInt에 문자열이 들어오면 오류메세지 출력
-	public void checkInt() {
+	public static void checkInt() {
 		while (!Util.keyboard.hasNextInt()) {
 			Util.keyboard.next();
 			System.err.println("메뉴내의 숫자를 입력해주세요.");

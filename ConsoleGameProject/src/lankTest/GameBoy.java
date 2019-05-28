@@ -3,31 +3,25 @@ package lankTest;
 import java.util.Collections;
 import java.util.List;
 
-public class GameBoy {
+public class GameBoy   {
 
-	
-	RankTest rt = new RankTest();
-	
-	 public String name;
-	 public int point;
-
+	public String name;
+	public int point;
+	RankTest lt= new RankTest();
 	// 게임선택창에서 선택한 수를 가져와 담아줄 변수
-	int check = 1;// 테스트용
-	
 
-
-	public GameBoy(String name2, int point2) {
-		// TODO Auto-generated constructor stub
+	public GameBoy() {
 	}
 
+	public GameBoy(String name, int point) {
+		this.name = name;
+		this.point = point;
+	}
 
-
-//	public void setInfo(String name, int point) {
-//		this.name = name;
-//		this.point = point;
-//	}
-
-
+	public void setInfo(String name, int point) {
+		this.name = name;
+		this.point = point;
+	}
 
 	public void showData() {
 		System.out.println("USERNAME:" + name);
@@ -35,33 +29,31 @@ public class GameBoy {
 		System.out.println("-------------");
 	}
 
-	
 	public void saveData(int check) {
 		// 게임 선택에서 고른수를 가져와 그 게임에 맞는 결과를 저장한다
 
 		switch (check) {
 		case 1:
-			rt.list = rt.rm.lank1;
-			dataUp(rt.list);
+			 lt.list = lt.rm.lank1;
+			dataUp(lt.list);
 
 			break;
 		case 2:
-			rt.list = rt.rm.lank2;
-			dataUp(rt.list);
+			lt.list = lt.rm.lank2;
+			dataUp(lt.list);
 			break;
 		case 3:
-			rt.list = rt.rm.lank3;
-			dataUp(rt.list);
+			lt.list = lt.rm.lank3;
+			dataUp(lt.list);
 			break;
 		case 4:
-			rt.list = rt.rm.lank4;
-			dataUp(rt.list);
+			lt.list =lt. rm.lank4;
+			dataUp(lt.list);
 			break;
 
 		}
 	}
-
-	
+//점수갱신
 	void dataUp(List<GameBoy> list) {
 		int index = -1;
 		Collections.sort(list, new Comprator());
@@ -70,16 +62,13 @@ public class GameBoy {
 				index = i;
 				break;
 			}
-
 		}
 		if (index < 0) {
 			System.out.println("정보가 저장되었습니다");
-			//list.add(new GameBoy(name, point));
 			list.add(new GameBoy(name, point));
 			showData();
 		} else {
 			System.out.println("새로운 점수로 갱신되었습니다");
-			//list.set(index, new GameBoy(name, point));
 			list.set(index, new GameBoy(name, point));
 			showData();
 		}

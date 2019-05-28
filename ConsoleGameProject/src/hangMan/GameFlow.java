@@ -2,19 +2,17 @@ package hangMan;
 
 import user.UserManager;
 
-public class GameFlow {
-	public static void gameProcess(String id, int score) {
+public class GameFlow extends UserManager {
+	public static void gameProcess(String id) {
 		
-		System.out.println(score);
-		//int point = score; 
 		
 		GameManager gm = new GameManager();
-		UserManager manager = new UserManager();
+
 		
 		System.out.println(id + "님 게임을 선택해주세요. ");
 		
 		while(true) {
-			int choice = gm.startMenu(id, score);
+			int choice = gm.startMenu(id);
 
 			switch(choice) {
 			case util.Menu.EASY: 
@@ -30,8 +28,8 @@ public class GameFlow {
 				gm.gameStart(10);
 				break;
 			case util.Menu.BACK: //뒤로가기
-				 return;
-				//manager.game(id);
+				 //return;
+				 game(id);
 			default : //
 				System.out.println("적절한 선택을 해주세요. ");
 			}
