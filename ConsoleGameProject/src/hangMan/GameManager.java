@@ -1,27 +1,32 @@
 package hangMan;
 
 import java.util.InputMismatchException;
+import java.util.Map;
 import java.util.Scanner;
 
 import lankTest.GameBoy;
+import user.UserInfo;
 import user.UserManager;
 import util.Util;
 
 public class GameManager extends UserManager{
 
+
 	String name;
 	int point;
-	
-	
-	GameBoy gb = new GameBoy(this.name, this.point);
-
 	int check = 1;
+	
+	
+	
+	GameBoy gb = new GameBoy();
+
 
 	// 0. 게임 시작 메뉴 입력 화면
-	public int startMenu(String id, int score) {
-		this.name = id;
-		this.point = score;
-
+	public int startMenu(String id) {
+		
+		this.name = userinfo.get(id).getId();
+		this.point = userinfo.get(id).getScore();
+		
 		int choice = 0;
 		System.out.println("===========================");
 		System.out.println(id + " 님 환영합니다*^^*");
@@ -37,6 +42,7 @@ public class GameManager extends UserManager{
 		}
 		Util.keyboard.nextLine();
 		return choice;
+		
 	}
 
 	void gameStart(int n) {
@@ -130,7 +136,8 @@ public class GameManager extends UserManager{
 			}
 
 		}
-		savePoint(gamePoint(failCnt));
+		
+		gamePoint(failCnt);
 		afterGame(failCnt);
 	}
 
@@ -149,7 +156,7 @@ public class GameManager extends UserManager{
 			switch (choice) {
 			case util.Menu.KEEPGAME: // 게임 계속하기
 				GameFlow gflow = new GameFlow();
-				gflow.gameProcess(name, point);
+				gflow.gameProcess(name);
 				break;
 			case util.Menu.GOTOMAIN: // 메인으로 돌아가기
 				// 메인 클래스와 연결
@@ -175,7 +182,7 @@ public class GameManager extends UserManager{
 	}
 
 	// 점수 매서드
-	int gamePoint(int n) {
+	void gamePoint(int n) {
 		int gamePoint = point;
 		int failCnt = n;
 		if (failCnt <= 1) {
@@ -189,22 +196,17 @@ public class GameManager extends UserManager{
 		} else {
 			gamePoint = 0;
 		}
-		return gamePoint;
+		
+		savePoint(gamePoint);
 	}
 
 	// 유저-게임포인트 저장 메서드
 
-	void savePoint(int gameP) {
-		System.out.println(name+gameP);
-		// 사용자 정보 클래스에 저장
+	public void savePoint(int point) {
 		gb.name=name;
-		gb.point=gameP;
+		gb.point=point;
 		gb.saveData(check);
-		System.out.println("이번 판의 게임 포인트는 " + gameP + "점 입니다.");
 	}
 
-	// failCnt가 3일 때 힌트 제안
-	void Hint() {
 
-	}
 }

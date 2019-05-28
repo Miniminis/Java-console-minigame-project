@@ -3,17 +3,17 @@ package lankTest;
 import java.util.Collections;
 import java.util.List;
 
-public class GameBoy   {
+class GameBoy   {
 
-	public String name;
-	public int point;
-	RankTest lt= new RankTest();
+	String name;
+	int point;
+	LankTest lt= new LankTest();
 	// 게임선택창에서 선택한 수를 가져와 담아줄 변수
 
-	public GameBoy() {
+	GameBoy() {
 	}
 
-	public GameBoy(String name, int point) {
+	GameBoy(String name, int point) {
 		this.name = name;
 		this.point = point;
 	}
