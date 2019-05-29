@@ -78,7 +78,9 @@ public class GameManager extends UserManager{
 
 			// 유저가 게임 중단을 선택할때
 			if (answer.equals("5")) {
-				afterGame(failCnt);
+				failCnt=12;
+				break;
+				//afterGame(failCnt);
 			}
 
 			// 제한 범위 외의 입력값/중복알파벳/한글이외의 입력값에 대한 예외처리
@@ -135,7 +137,6 @@ public class GameManager extends UserManager{
 			}
 
 		}
-		
 		gamePoint(failCnt);
 		afterGame(failCnt);
 	}
@@ -147,22 +148,27 @@ public class GameManager extends UserManager{
 
 			System.out.println("===========================");
 			System.out.println("게임이 끝났습니다. 메뉴를 선택해주세요. ");
-			System.out.printf("\n%d) 게임 다시하기 \n%d) 메인으로 돌아가기", util.Menu.KEEPGAME, util.Menu.GOTOMAIN);
+			System.out.printf("\n%d) 게임 다시하기 \n%d) 이전으로 돌아가기", util.Menu.KEEPGAME, util.Menu.GOTOMAIN);
 			System.out.println("\n===========================");
 
 			int choice = Util.keyboard.nextInt();
+			Util.keyboard.nextLine();
 
 			switch (choice) {
 			case util.Menu.KEEPGAME: // 게임 계속하기
 				GameFlow gflow = new GameFlow();
 				gflow.gameProcess(name);
 				break;
-			case util.Menu.GOTOMAIN: // 메인으로 돌아가기
+			case util.Menu.GOTOMAIN: // 메인으로 돌아가기2			
 				// 메인 클래스와 연결
 				return;
 			default:
 				System.out.println("메뉴를 다시 선택해주세요. ");
-				afterGame(failCnt);
+				break;
+			}
+			
+			if(util.Menu.GOTOMAIN==choice) {
+				break;
 			}
 		}
 	}

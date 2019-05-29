@@ -3,6 +3,7 @@ package user;
 import java.util.HashMap;
 import java.util.Map;
 
+import movieGame.MovieGameFlow;
 import util.Menu;
 import util.Util;
 
@@ -276,7 +277,7 @@ public class UserManager {
 
 			// 숫자가아닌 문자가 들어왔을 때
 
-			 GameChoice = Util.keyboard.nextInt();
+			GameChoice = Util.keyboard.nextInt();
 			Util.keyboard.nextLine();// 현재 라인의 버퍼를 출력(clear)
 
 			switch (GameChoice) {
@@ -284,7 +285,7 @@ public class UserManager {
 				hangMan.GameFlow.gameProcess(id);
 				break;
 			case Menu.SECOND_GAME:// 두번째게임
-
+				MovieGameFlow.MovieGameMain(id);
 				break;
 			case Menu.THIRD_GAME:// 세번째게임
 

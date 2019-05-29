@@ -1,4 +1,4 @@
-package MiniGame;
+package movieGame;
 
 import java.util.Timer;
 import java.util.TimerTask;

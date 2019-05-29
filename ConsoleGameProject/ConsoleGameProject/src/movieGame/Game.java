@@ -1,21 +1,28 @@
-package MiniGame;
+package movieGame;
 
 import java.util.InputMismatchException;
 
-public class Game implements GameInterface {
+import lankTest.GameBoy;
+import user.UserManager;
+
+public class Game extends UserManager {
 
 	Util util = new Util();
 
 	String name;
 	int point;
-
-	Game() {
-	}
+	final int check = 2;
+	
+	GameBoy gb = new GameBoy(); //랭킹 인스턴스 생성 
 
 	// 메인시작
-	public void StartWord() {
+	public void StartWord(String id) {
+
+		this.name = id;
+		this.point = userinfo.get(id).getScore();
+
 		System.out.println("<영화 퀴즈 맞추기>");
-		System.out.println(name + "님 환영합니다.");
+		System.out.println(id + "님 환영합니다.");
 		System.out.println("======================");
 		System.out.println("  - 게임   설명 -");
 		System.out.println("장르를 선택 후 주어지는 초성에 정답이라고");
@@ -27,64 +34,22 @@ public class Game implements GameInterface {
 	// 영화 선택 메소드
 	public int showprint() {
 
-		while (true) {
-
-			System.out.println("======================");
-			System.out.println(Util.KOREA_MOVIE + ") 한국영화 ");
-			System.out.println(Util.world_MOVIE + ") 외국영화");
-			System.out.println(Util.ani_MOVIE + ") 애니메이션 영화");
-			System.out.println("4) 메인");
-			System.out.println("======================");
-
-			try {
-				int choice = 0;
-				choice = util.key.nextInt();
-				if (choice > 4) {
-					Print2();
-				} else {
-					util.key.nextLine();
-					return choice;
-				}
-
-			} catch (InputMismatchException e) {
-				util.key.nextLine();
-				Print2();
-			}
-		}
-
-	}
-
-	// 메인이나 게임으로 돌아가는 메소드
-	public void main() {
-
-		System.out.println("1) 게임 메인");
+		int choice = 0;
+		System.out.println("======================");
+		System.out.println(Util.KOREA_MOVIE + ") 한국영화 ");
+		System.out.println(Util.world_MOVIE + ") 외국영화");
+		System.out.println(Util.ani_MOVIE + ") 애니메이션 영화");
+		System.out.println("4) 메인");
+		System.out.println("======================");
 		try {
-			int choice = 0;
 			choice = util.key.nextInt();
-			switch (choice) {
-			case 1:
-				showprint();
-				break;
-			default:
-				break;
-
-			}
 		} catch (InputMismatchException e) {
-			util.key.nextLine();
-			Print();
 
 		}
+		util.key.nextLine(); // 버퍼제거
 
-	}
+		return choice;
 
-	@Override
-	public void showData() {
-
-	}
-
-	@Override
-	public void saveData() {
-		System.out.println("저장!!");
 	}
 
 	// 난이도 선택 메소드
@@ -100,21 +65,11 @@ public class Game implements GameInterface {
 		int cho = 0;
 		try {
 			cho = util.key.nextInt();
-			if (cho > 4) {
-				Print2();
-			}
-
 		} catch (InputMismatchException e) {
-			Print2();
-
 		}
 		util.key.nextLine();
 		return cho;
 
-	}
-
-	public void Back() {
-		showprint();
 	}
 
 	// 오류처리 사용 메소드
@@ -130,7 +85,6 @@ public class Game implements GameInterface {
 		System.out.println("1~4사이의 숫자를 입력해주세요!");
 		System.out.println("======================");
 	}
-	
 
 	// 틀린답 출력메소드
 	public void WrongAnswer() {
@@ -142,10 +96,16 @@ public class Game implements GameInterface {
 		System.out.println("힌트가 필요하시면 \"힌트\"를 입력해주세요. ");
 		System.out.println("정답을 입력해주세요!");
 	}
-	public void GoMain() {
-		//메인
+
+//	public void GoMain() {
+//		// 메인
+//	}
+	
+	// 유저-게임포인트 저장 메서드
+	public void savePoint(String name, int point) {
+		gb.name=name;
+		gb.point=point;
+		gb.saveData(check);
 	}
 
-
-	
 }
