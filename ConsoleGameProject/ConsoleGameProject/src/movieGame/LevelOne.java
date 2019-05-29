@@ -13,7 +13,7 @@ public class LevelOne extends Game {
 	
 		time.Timer();
 
-		while (time.count < 60) {
+		while (true) {
 
 			String answer = util.key.nextLine();
 
@@ -39,7 +39,7 @@ public class LevelOne extends Game {
 		answer2();//출력 메소드
 		time.Timer();
 
-		while (time.count < 60) {
+		while (true) {
 
 			
 			String answer = util.key.nextLine();
@@ -65,7 +65,7 @@ public class LevelOne extends Game {
 		answer2();//출력 메소드
 		time.Timer();
 
-		while (time.count < 60) {
+		while (true) {
 			String answer = util.key.nextLine();
 			if (answer.equals("니모를 찾아서")) {
 				time.cancel();

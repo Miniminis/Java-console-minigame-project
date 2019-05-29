@@ -4,23 +4,23 @@ public class UserInfo {
 
 	private String id;		//아이디
 	private String password;//비밀번호
-	private String nickname;//닉네임
+	//private String nickname;//닉네임
 	private int score;//점수
 
 	// 생성자를 통한 변수 초기화
-	public UserInfo(String id, String pw, String nName, int score) {
+	public UserInfo(String id, String pw, int score) {
 
 		this.id = id;
 		this.password = pw;
-		this.nickname = nName;
+		//this.nickname = nName;
 		this.score = score;
 
 	}
 
 	//점수 0으로 초기화
-	public UserInfo(String id, String pw, String nName) {
+	public UserInfo(String id, String pw) {
 
-		this(id, pw, nName, 0);
+		this(id, pw, 0);
 
 	}
 	
@@ -52,14 +52,14 @@ public class UserInfo {
 	}
 
 
-	public String getNickname() {
-		return nickname;
-	}
-
-
-	public void setNickname(String nickname) {
-		this.nickname = nickname;
-	}
+//	public String getNickname() {
+//		return nickname;
+//	}
+//
+//
+//	public void setNickname(String nickname) {
+//		this.nickname = nickname;
+//	}
 
 
 	public int getScore() {

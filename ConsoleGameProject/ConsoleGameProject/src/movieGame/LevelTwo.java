@@ -11,7 +11,7 @@ public class LevelTwo extends Game {
 		answer2(); // 출력 메소드
 		time.Timer();
 
-		while (time.count < 60) {
+		while (true) {
 			String answer = util.key.nextLine();
 
 			if (answer.equals("내 머리 속의 지우개")) {
@@ -37,7 +37,7 @@ public class LevelTwo extends Game {
 		answer2();// 출력 메소드
 		time.Timer();
 
-		while (time.count < 60) {
+		while (true) {
 			String answer = util.key.nextLine();
 			if (answer.equals("킹스맨")) {
 				time.cancel();
@@ -61,7 +61,7 @@ public class LevelTwo extends Game {
 		answer2();// 출력메소드
 		time.Timer();
 
-		while (time.count < 60) {
+		while (true) {
 			String answer = util.key.nextLine();
 			if (answer.equals("인사이드 아웃")) {
 				time.cancel();

@@ -12,7 +12,7 @@ public class LevelThree extends Game {
 		answer2();//출력 메소드
 		time.Timer();
 
-		while (time.count < 60) {
+		while (true) {
 			String answer = util.key.nextLine();
 			if (answer.equals("웰컴 투 동막골")) {
 				time.cancel();
@@ -36,7 +36,7 @@ public class LevelThree extends Game {
 		answer2();//출력메소드
 		time.Timer();
 
-		while (time.count < 60) {
+		while (true) {
 			String answer = util.key.nextLine();
 			if (answer.equals("찰리와 초콜릿 공장")) {
 				time.cancel();
@@ -60,7 +60,7 @@ public class LevelThree extends Game {
 		answer2();//출력메소드
 		time.Timer();
 
-		while (time.count < 60) {
+		while (true) {
 
 			String answer = util.key.nextLine();
 

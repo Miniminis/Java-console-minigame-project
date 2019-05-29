@@ -84,7 +84,7 @@ public class UserManager {
 
 		} else if (userinfo.containsKey(id) && userinfo.get(id).getPassword().equals(pw)) {
 			System.out.println("로그인되었습니다.");
-			System.out.println(id + "(" + userinfo.get(id).getNickname() + ")" + "님 환영합니다.");
+			System.out.println(id + "님 환영합니다.");
 
 			subMain(id);
 
@@ -115,14 +115,14 @@ public class UserManager {
 		System.out.println("비밀번호를 입력해주세요.");
 		String pw = Util.keyboard.nextLine();
 
-		System.out.println("닉네임을 입력해주세요.");
-		String nName = Util.keyboard.nextLine();
+//		System.out.println("닉네임을 입력해주세요.");
+//		String nName = Util.keyboard.nextLine();
 
-		UserInfo ui = new UserInfo(id, pw, nName);
+		UserInfo ui = new UserInfo(id, pw);
 
 		userinfo.put(ui.getId(), ui);
 
-		System.out.println(id + "(" + nName + ")" + "님 회원가입이 완료되었습니다.");
+		System.out.println(id + "님 회원가입이 완료되었습니다.");
 
 	}
 
@@ -151,97 +151,93 @@ public class UserManager {
 
 		while (true) {
 
-			System.out.println("=====================================");
-			System.out.println("	      Sub Menu");
-			System.out.println("=====================================");
-			System.out.println("로그인 유저 : " + id);
-			// + "(" + userinfo.get(id).getNickname() + ")"
-			System.out.printf("%d.정보수정\n%d.내정보\n%d.게임하기\n%d.랭킹\n%d.로그아웃\n%d.회원탈퇴", Menu.L_UPDATE, Menu.L_INFO, Menu.L_GAME,
-					Menu.L_RANK, Menu.L_OUT, Menu.L_WITHDRAWAL);
-			System.out.println("\n=====================================");
+	         System.out.println("=====================================");
+	         System.out.println("         Sub Menu");
+	         System.out.println("=====================================");
+	         System.out.println("로그인 유저 : " + id);
+	         System.out.printf("%d.내정보확인\n%d.비밀번호변경\n%d.게임하기\n%d.랭킹\n%d.로그아웃\n%d.회원탈퇴", Menu.L_INFO, Menu.L_UPDATE, Menu.L_GAME,
+	               Menu.L_RANK, Menu.L_OUT, Menu.L_WITHDRAWAL);
+	         System.out.println("\n=====================================");
 
-			int subChoice = Util.keyboard.nextInt();
-			Util.keyboard.nextLine();// 현재 라인의 버퍼를 출력(clear)
-		//	checkInt();
-			switch (subChoice) {
-			case Menu.L_UPDATE:// 정보수정
-				System.out.println("=====================================");
-				System.out.println("	        정보수정");
-				System.out.println("=====================================");
-				updateInfo(id);
-				break;
-			case Menu.L_INFO:// 내정보
-				System.out.println("=====================================");
-				System.out.println("	          내정보 보기");
-				System.out.println("=====================================");
-				myInfo(id);
-				break;
-			case Menu.L_GAME:// 게임하기
-				gameMain(id);
-				break;
-			case Menu.L_RANK:// 랭킹
-				System.out.println("=====================================");
-				System.out.println("	        랭킹확인");
-				System.out.println("=====================================");
-				printRank(id);
-				break;
-			case Menu.L_OUT:// 로그아웃
-				System.out.println("로그아웃됩니다.");
-				return;
-			// mainMenu();
-			// break;
-			case Menu.L_WITHDRAWAL:// 회원탈퇴
-				deleteMember(id);
-				break;
-			default:
-				System.out.println("메뉴중에서 선택해주세요.");
-				break;
-			}
-		}
+	         int subChoice = Util.keyboard.nextInt();
+	         Util.keyboard.nextLine();// 현재 라인의 버퍼를 출력(clear)
+	      //   checkInt();
+	         switch (subChoice) {
+	         case Menu.L_UPDATE:// 정보수정
+	            System.out.println("=====================================");
+	            System.out.println("         비밀번호 변경");
+	            System.out.println("=====================================");
+	            updateInfo(id);
+	            break;
+	         case Menu.L_INFO:// 내정보
+	            System.out.println("=====================================");
+	            System.out.println("          내정보 보기");
+	            System.out.println("=====================================");
+	            myInfo(id);
+	            break;
+	         case Menu.L_GAME:// 게임하기
+	            gameMain(id);
+	            break;
+	         case Menu.L_RANK:// 랭킹
+	            System.out.println("=====================================");
+	            System.out.println("           랭킹확인");
+	            System.out.println("=====================================");
+	            printRank(id);
+	            break;
+	         case Menu.L_OUT:// 로그아웃
+	            System.out.println("로그아웃됩니다.");
+	            //mainMenu();
+	            break;
+	         case Menu.L_WITHDRAWAL:// 회원탈퇴
+	            deleteMember(id);
+	            break;
+	         default:
+	            System.out.println("메뉴중에서 선택해주세요.");
+	            break;
+	         }
+	         if(subChoice == Menu.L_OUT) {
+	            break;
+	         }
+	      }
 
 	}
 
 	// 회원수정
 	public static void updateInfo(String id) {
 
-		System.out.println("수정 전 본인확인을 위해 비밀번호를 입력해주세요.");
-		System.out.println("이전으로 가려면 X입력");
-		String pw = Util.keyboard.nextLine();
+		System.out.println("이전 비밀번호를 입력해주세요.");
+	      System.out.println("이전화면으로 가려면 X입력");
+	      String pw = Util.keyboard.nextLine();
 
-		if (userinfo.get(id).getPassword().equals(pw)) {
-			System.out.println("본인확인되었습니다.");
+	      if (userinfo.get(id).getPassword().equals(pw)) {
+	         System.out.println("본인확인되었습니다.");
+	         System.out.println("수정할 비밀번호를 입력해주세요.");
+	         String newPw = Util.keyboard.nextLine();
 
-			System.out.println("\n비밀번호와 닉네임만 수정가능합니다.");
-			System.out.println("수정할 비밀번호를 입력해주세요.");
-			String newPw = Util.keyboard.nextLine();
-			System.out.println("수정할 닉네임을 입력해주세요.");
-			String newnName = Util.keyboard.nextLine();
+	         UserInfo ui = new UserInfo(id, newPw);
+	         userinfo.put(ui.getId(), ui);
 
-			UserInfo ui = new UserInfo(id, newPw, newnName);
-			userinfo.put(ui.getId(), ui);
-
-			System.out.println("수정되었습니다.");
-			subMain(id);
-		} else if (pw.toUpperCase().equals("X") || pw.toLowerCase().equals("x")) {
-			subMain(id);
-		} else {
-			System.out.println("잘못된 비밀번호입니다. 다시입력해주세요.");
-			System.out.println("이전으로 가려면 X입력");
-			updateInfo(id);
-		}
-
+	         System.out.println("수정되었습니다.");
+	         subMain(id);
+	      } else if (pw.toUpperCase().equals("X") || pw.toLowerCase().equals("x")) {
+	         subMain(id);
+	      } else {
+	         System.out.println("잘못된 비밀번호입니다. 다시입력해주세요.");
+	         System.out.println("이전으로 가려면 X입력");
+	         updateInfo(id);
+	      }
 	}
 
 	// 내정보보기
 	public static void myInfo(String id) {
 		if (userinfo.get(id).getId().equals(id)) {
 
-			System.out.println("아 이 디 : " + id);
-			System.out.println("비밀번호 : " + userinfo.get(id).getPassword());
-			System.out.println("닉 네 임 : " + userinfo.get(id).getNickname());
-			System.out.println("점    수 : " + userinfo.get(id).getScore() + "점");
-		}
-		subMain(id);
+	         System.out.println("아 이 디 : " + id);
+	         System.out.println("비밀번호 : " + userinfo.get(id).getPassword());
+	         System.out.println("점    수 : " + userinfo.get(id).getScore() + "점");
+	         
+	      }
+	      subMain(id);
 	}
 
 	// 게임하기
