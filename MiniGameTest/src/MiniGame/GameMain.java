@@ -3,12 +3,11 @@ package MiniGame;
 public class GameMain {
 
 	public static void main(String[] args) {
-		
+
 		Game game = new Game();
 		LevelOne one = new LevelOne();
 		LevelTwo two = new LevelTwo();
 		LevelThree three = new LevelThree();
-
 
 		game.StartWord();
 		int choice = 0;
@@ -28,7 +27,7 @@ public class GameMain {
 					switch (cho) {
 
 					case 1:
-						
+
 						one.Korea1();
 						break;
 					case 2:
@@ -39,6 +38,8 @@ public class GameMain {
 						break;
 					case 4:
 						game.Back();
+					default:
+						break;
 					}
 					break;
 				}
@@ -59,11 +60,13 @@ public class GameMain {
 						break;
 					case 4:
 						game.Back();
+					default:
+						break;
 					}
 					break;
 				}
-				
-				//애니메이션 영화
+
+				// 애니메이션 영화
 			case Util.ani_MOVIE:
 
 				while (true) {
@@ -80,9 +83,18 @@ public class GameMain {
 						break;
 					case 4:
 						game.Back();
+					default:
+						break;
 					}
 					break;
 				}
+			case 4:// 메인
+				System.out.println("메인");
+				break;
+
+			default:
+				break;
+
 			}
 
 		}

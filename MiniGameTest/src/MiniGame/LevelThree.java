@@ -1,5 +1,7 @@
 package MiniGame;
 
+import sun.security.krb5.Asn1Exception;
+
 public class LevelThree extends Game {
 
 	Time time = new Time();
@@ -8,15 +10,14 @@ public class LevelThree extends Game {
 	public void Korea3() {
 		System.out.println("난이도 고급 문제입니다.");
 		System.out.println("[ㅇㅋㅌㄷㅁㄱ]");
-		System.out.println("힌트가 필요하시면 \"힌트\"를 입력해주세요. ");
-		System.out.println("정답을 입력해주세요!");
+		answer2();//출력 메소드
 		time.Timer();
 
 		while (time.count < 60) {
 			String answer = util.key.nextLine();
 			if (answer.equals("웰컴 투 동막골")) {
 				time.cancel();
-				System.out.println("저장 된 점수는 : " + Point3(0) + "점 입니다!");
+				answer();//정답 메소드
 				saveData();
 				main();
 				break;
@@ -25,7 +26,7 @@ public class LevelThree extends Game {
 			} else if (answer.equals("난 바보야")) {
 				main();
 			} else {
-				System.out.println("틀렸습니다. 다시생각해보세요.");
+				WrongAnswer();//틀렸을때 출력 메소드
 
 			}
 		}
@@ -35,15 +36,14 @@ public class LevelThree extends Game {
 	public void World3() {
 		System.out.println("난이도 고급 문제입니다.");
 		System.out.println("[ㅊㄹㅇㅊㅋㄹㄱㅈ]");
-		System.out.println("힌트가 필요하시면 \"힌트\"를 입력해주세요. ");
-		System.out.println("정답을 입력해주세요!");
+		answer2();//출력메소드
 		time.Timer();
 
 		while (time.count < 60) {
 			String answer = util.key.nextLine();
 			if (answer.equals("찰리와 초콜릿 공장")) {
 				time.cancel();
-				System.out.println("저장 된 점수는 : " + Point3(0) + "점 입니다!");
+				answer();//정답 메소드
 				saveData();
 				main();
 				break;
@@ -52,7 +52,7 @@ public class LevelThree extends Game {
 			} else if (answer.equals("난 바보야")) {
 				main();
 			} else {
-				System.out.println("틀렸습니다. 다시생각해보세요.");
+				WrongAnswer();//틀렸을때 출력 메소드
 
 			}
 		}
@@ -62,8 +62,7 @@ public class LevelThree extends Game {
 	public void ani3() {
 		System.out.println("난이도 고급 문제입니다.");
 		System.out.println("[ㅇㅇㅅㅇㅇㅈ]");
-		System.out.println("힌트가 필요하시면 \"힌트\"를 입력해주세요. ");
-		System.out.println("정답을 입력해주세요!");
+		answer2();//출력메소드
 		time.Timer();
 
 		while (time.count < 60) {
@@ -72,7 +71,7 @@ public class LevelThree extends Game {
 
 			if (answer.equals("아이스에이지")) {
 				time.cancel();
-				System.out.println("저장 된 점수는 : " + Point3(0) + "점 입니다!");
+				answer();//정답 메소드
 				saveData();
 				main();
 				break;
@@ -81,7 +80,7 @@ public class LevelThree extends Game {
 			} else if (answer.equals("난 바보야")) {
 				main();
 			} else {
-				System.out.println("틀렸습니다. 다시생각해보세요.");
+				WrongAnswer();//틀렸을때 출력 메소드
 
 			}
 		}
@@ -92,5 +91,11 @@ public class LevelThree extends Game {
 		num3 = (int) (Math.random() * (21) + 50);
 		return num3;
 	}
+	// 정답 출력메소드
+		public void answer() {
+			System.out.println("정답입니다!");
+			System.out.println("---------");
+			System.out.println("저장 된 점수는 : " + Point3(0) + "점 입니다!");
+		}
 
 }
