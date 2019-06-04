@@ -8,8 +8,8 @@ public interface Menu {
 	int QUIT = 3;
 
 	//서브메뉴
-	int L_UPDATE = 1;
-	int L_INFO = 2;
+	int L_INFO = 1;
+	int L_UPDATE = 2;
 	int L_GAME = 3;
 	int L_RANK = 4;
 	int L_OUT = 5;
