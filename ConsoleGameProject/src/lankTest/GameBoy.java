@@ -24,6 +24,9 @@ public class GameBoy   {
 	}
 
 	public void showData() {
+		System.out.println("=====================================");
+		System.out.println("	      GAMEINFO");
+		System.out.println("=====================================");
 		System.out.println("이름 : " + name);
 		System.out.println("점수 : " + point);
 		System.out.println("=====================================");

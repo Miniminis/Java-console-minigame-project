@@ -1,20 +1,22 @@
 package hangMan;
 
+import java.io.IOException;
+
 import user.UserManager;
 
 public class GameFlow extends UserManager {
-	public static void gameProcess(String id) {
+	public static void gameProcess(String id) throws IOException {
 		
 		
 		GameManager gm = new GameManager();
 
 		
-		System.out.println(id + "님 게임을 선택해주세요. ");
+		System.out.println("minhee" + "님 게임을 선택해주세요. ");
 		
-		boolean check = false;
+	//	boolean check = false;
 		
 		
-		//while(true) {
+		while(true) {
 		
 			int choice = gm.startMenu(id);
 
@@ -29,16 +31,21 @@ public class GameFlow extends UserManager {
 				break;
 			case util.Menu.ADVANCED: 
 				System.out.println("고급게임을 시작합니다.");
-				gm.gameStart(10);
+				gm.gameStart(7);
 				break;
 			case util.Menu.BACK: //뒤로가기
-				// return;
-				 game(id);
+				System.out.println("이전 메뉴로 돌아갑니다.");
+				break;
+				//return;
+				 //game(id);
 			default : //
 				System.out.println("적절한 선택을 해주세요. ");
 			}
 			
-		//}
+			if(util.Menu.BACK==choice) {
+			break;
+			}
+		}
 	}
 
 }

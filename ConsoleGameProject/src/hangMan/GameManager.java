@@ -1,5 +1,6 @@
 package hangMan;
 
+import java.io.IOException;
 import java.util.InputMismatchException;
 import java.util.Map;
 import java.util.Scanner;
@@ -21,17 +22,20 @@ public class GameManager extends UserManager{
 
 
 	// 0. 게임 시작 메뉴 입력 화면
-	public int startMenu(String id) {
+	public int startMenu(String id) { //getId		
 		
-		this.name = userinfo.get(id).getId();
-		this.point = userinfo.get(id).getScore();
+	    this.name = userinfo.get(id).getId(); 
+	    this.point =userinfo.get(id).getScore();
+		 
 		
 		int choice = 0;
-		System.out.println("===========================");
-		System.out.println(id + " 님 환영합니다*^^*");
+		System.out.println("=====================================");
+		System.out.println("	      HangmanGame Menu");
+		System.out.println("=====================================");
+		System.out.println("minhee" + " 님 환영합니다*^^*");
 		System.out.println("게임의 난이도를 선택해주세요.");
 		System.out.println("1) 초급 2) 중급 3) 고급 4) 뒤로가기");
-		System.out.println("===========================");
+		System.out.println("=====================================");
 
 		// 유저의 메뉴입력
 		try {
@@ -44,17 +48,21 @@ public class GameManager extends UserManager{
 		
 	}
 
-	void gameStart(int n) {
+	void gameStart(int n) throws IOException {
 
 		// random words 인스턴스 생성
-		RandomWords rdw = new RandomWords();
-
-		String correctAnswer = rdw.randomWord(n); // 랜덤 키워드로부터 길이가 n인 정답단어 축출
-		char[] correctAnswerArray = correctAnswer.toCharArray(); // 단어의 각 알파벳 대조를 위해 char array 생성
-		char[] blank = new char[correctAnswerArray.length]; // 단어 자리수 표시를 위한 공백 array
-		for (int i = 0; i < correctAnswerArray.length; i++) {
-			blank[i] = '_';
-		}
+		//RandomWords rdw = new RandomWords();
+		
+		//update(2019.06.04): 외부 text file로부터 읽어들인 rdwUp 인스턴스 생성
+		RandomWordsUpdate rdwUp = new RandomWordsUpdate();
+		
+		
+		String correctAnswer = rdwUp.randomWord(n); // 랜덤 키워드로부터 길이가 n인 정답단어 축출 
+		char[] correctAnswerArray = correctAnswer.toCharArray(); // 단어의 각 알파벳 대조를 위해 char array 생성 
+		char[] blank = new char[correctAnswerArray.length]; // 단어 자리수 표시를 위한 공백 array 
+		for (int i = 0; i < correctAnswerArray.length; i++) { 
+			blank[i] ='_'; 
+		}		
 
 		int failCnt = 0; // 유저의 오답 횟수
 
@@ -65,8 +73,9 @@ public class GameManager extends UserManager{
 				System.out.println("당신은 천재이군요!");
 				break;
 			}
-
+	        System.out.println("=====================================");
 			System.out.println("빈 칸에 들어갈 알맞은 알파벳을 입력해주세요. \n(***게임 중단을 원하시면 5번을 눌러주세요***)");
+			System.out.println("=====================================");
 			for (int i = 0; i < correctAnswerArray.length; i++) { // 유저화면에 빈칸 array 표시 - 자릿수 표시
 				System.out.print(blank[i] + " ");
 			}
@@ -78,7 +87,9 @@ public class GameManager extends UserManager{
 
 			// 유저가 게임 중단을 선택할때
 			if (answer.equals("5")) {
-				afterGame(failCnt);
+				failCnt=12;
+				break;
+				//afterGame(failCnt);
 			}
 
 			// 제한 범위 외의 입력값/중복알파벳/한글이외의 입력값에 대한 예외처리
@@ -103,8 +114,10 @@ public class GameManager extends UserManager{
 				// 정답단어 != 유저입력 알파벳
 				if (success != true) {
 					failCnt++;
+					System.out.println("=====================================");
 					System.out.println("남은 횟수: " + (12 - failCnt));
 					System.out.println("억울한 사형수의 " + deleteHangMan(12 - failCnt) + "이/가 사라집니다.");
+					System.out.println("=====================================");
 				}
 
 				// 힌트제공 (failCnt == 3, 6, 9)
@@ -135,7 +148,6 @@ public class GameManager extends UserManager{
 			}
 
 		}
-		
 		gamePoint(failCnt);
 		afterGame(failCnt);
 	}
@@ -145,24 +157,28 @@ public class GameManager extends UserManager{
 
 		while (true) {
 
-			System.out.println("===========================");
+			System.out.println("=====================================");
+			System.out.println("	    After Hangman Game");
+			System.out.println("=====================================");
 			System.out.println("게임이 끝났습니다. 메뉴를 선택해주세요. ");
-			System.out.printf("\n%d) 게임 다시하기 \n%d) 메인으로 돌아가기", util.Menu.KEEPGAME, util.Menu.GOTOMAIN);
-			System.out.println("\n===========================");
-
+			System.out.printf("\n%d) 게임 다시하기 \n%d) 이전으로 돌아가기", util.Menu.KEEPGAME, util.Menu.GOTOMAIN);
+			System.out.println("\n=====================================");
 			int choice = Util.keyboard.nextInt();
+			Util.keyboard.nextLine();
 
 			switch (choice) {
 			case util.Menu.KEEPGAME: // 게임 계속하기
-				GameFlow gflow = new GameFlow();
-				gflow.gameProcess(name);
 				break;
-			case util.Menu.GOTOMAIN: // 메인으로 돌아가기
+			case util.Menu.GOTOMAIN: // 메인으로 돌아가기2			
 				// 메인 클래스와 연결
 				return;
 			default:
 				System.out.println("메뉴를 다시 선택해주세요. ");
-				afterGame(failCnt);
+				break;
+			}
+			
+			if(util.Menu.GOTOMAIN==choice) {
+				break;
 			}
 		}
 	}

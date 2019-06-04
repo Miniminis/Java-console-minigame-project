@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="BeforeLankTest/src"/>
+	<classpathentry kind="src" path="ConsoleGameProject/ConsoleGameProject/src"/>
+	<classpathentry kind="src" path="ConsoleGameProject/src"/>
+	<classpathentry kind="src" path="HangManProject/src"/>
+	<classpathentry kind="src" path="Java-console-minigame-project-master/BeforeLankTest/src"/>
+	<classpathentry kind="src" path="Java-console-minigame-project-master/ConsoleGameProject/ConsoleGameProject/src"/>
+	<classpathentry kind="src" path="Java-console-minigame-project-master/ConsoleGameProject/src"/>
+	<classpathentry kind="src" path="Java-console-minigame-project-master/HangManProject/src"/>
+	<classpathentry kind="src" path="Java-console-minigame-project-master/lankTest/src"/>
+	<classpathentry kind="src" path="Java-console-minigame-project-master/Project_0529/src"/>
+	<classpathentry kind="src" path="lankTest/src"/>
+	<classpathentry kind="src" path="Project_0529/src"/>
+	<classpathentry kind="output" path="Project_0529/bin"/>
+</classpath>

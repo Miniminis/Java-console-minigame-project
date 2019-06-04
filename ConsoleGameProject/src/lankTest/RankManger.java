@@ -45,7 +45,7 @@ public class RankManger extends UserManager{
 				switch (secondChoice) {
 				case 1:
 					System.out.println("=====================================");
-					System.out.println("	        게임랭킹");
+					System.out.println("	      GAME LANK");
 					System.out.println("=====================================");
 					showAllRank();
 					break;
